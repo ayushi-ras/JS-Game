@@ -38,18 +38,28 @@ window.addEventListener('load', function () {
             this.height = 3;
             this.speed = 3;
             this.markedForDeletion = false;
+            this.image = document.getElementById('projectile');
         }
         update() {
             this.x += this.speed;
             if (this.x > this.game.width * 0.8) this.markedForDeletion = true;
         }
         draw(context) {
-            context.fillStyle = 'yellow';
-            context.fillRect(this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.x, this.y);
         }
 
     }
     class Particle {
+        constructor(game, x, y) {
+            this.game = game;
+            this.x = x;
+            this.y = y;
+            this.image = document.getElementById('gears');
+            this.frameX = Math.floor(Math.random() * 3);
+            this.frameY = Math.floor(Math.random() * 3);
+            this.spriteSize = 50;
+            this.sizeModifier = (Math.random() * 0.5 + 0.5).toFixed(1);
+        }
 
     }
     class Player {
@@ -75,6 +85,9 @@ window.addEventListener('load', function () {
             else if (this.game.keys.includes('ArrowDown')) this.speedy = this.maxSpeed;
             else this.speedy = 0;
             this.y += this.speedy;
+            //vertical Boundaries
+            if (this.y > this.game.height - this.height * 0.5) this.y = this.game.height - this.height * 0.5;
+            else if (this.y < -this.height * 0.5) this.y = -this.height * 0.5;
             //handle projectiles
             this.projectiles.forEach(projectile => {
                 projectile.update();
@@ -106,7 +119,7 @@ window.addEventListener('load', function () {
                 projectile.draw(context);
             });
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
-          
+
         }
         shootTop() {
             if (this.game.anmo > 0) {
@@ -115,15 +128,15 @@ window.addEventListener('load', function () {
             }
             if (this.powerUp) this.shootBottom();
         }
-        shootBottom(){
+        shootBottom() {
             if (this.game.anmo > 0) {
                 this.projectiles.push(new Projectile(this.game, this.x + 80, this.y + 175));
-                
+
             }
         }
-        enterPowerUp(){
+        enterPowerUp() {
             this.powerUpTimer = 0;
-            this. powerUp = true;
+            this.powerUp = true;
             this.game.anmo = this.game.maxAnmo;
         }
     }
@@ -149,8 +162,11 @@ window.addEventListener('load', function () {
         draw(context) {
             if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height)
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.height, this.width);
-            context.font = '20px Helvetica';
-            context.fillText(this.lives, this.x, this.y);
+            if (this.game.debug) {
+                context.font = '20px Bangers';
+                context.fillText(this.lives, this.x, this.y);
+            }
+
         }
 
     }
@@ -243,7 +259,7 @@ window.addEventListener('load', function () {
         constructor(game) {
             this.game = game;
             this.fontSize = 25;
-            this.fontFamily = 'Helvetica';
+            this.fontFamily = 'Bangers';
             this.color = 'white';
         }
         draw(context) {
@@ -255,7 +271,7 @@ window.addEventListener('load', function () {
             context.font = this.fontSize + 'px' + this.fontFamily;
             //score
             context.fillText('Score: ' + this.game.score, 20, 40);
-            
+
             //timer
             const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
             context.fillText('Timer: ' + formattedTime, 20, 100);
@@ -265,16 +281,16 @@ window.addEventListener('load', function () {
                 let message1;
                 let message2;
                 if (this.game.score > this.game.winningScore) {
-                    message1 = 'You Win';
-                    message2 = 'Well done!';
+                    message1 = 'Most Wondrous!';
+                    message2 = 'Well done explorer!';
                 } else {
-                    message1 = 'You lose';
-                    message2 = 'Try Again Next Time!'
+                    message1 = 'Blazes';
+                    message2 = 'Get my repair kit and Try Again!'
                 }
-                context.font = '50px ' + this.fontFamily;
-                context.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 40);
+                context.font = '70px ' + this.fontFamily;
+                context.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 20);
                 context.font = '25px ' + this.fontFamily;
-                context.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 40);
+                context.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 20);
 
             }
             //anmo
@@ -326,7 +342,7 @@ window.addEventListener('load', function () {
                 enemy.update();
                 if (this.checkCollision(this.player, enemy)) {
                     enemy.markedForDeletion = true;
-                    if(enemy.type ='lucky') this.player.enterPowerUp();
+                    if (enemy.type = 'lucky') this.player.enterPowerUp();
                     else this.score--;
 
                 }
