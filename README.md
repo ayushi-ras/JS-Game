@@ -42,7 +42,7 @@ git rebase upstream/main
 An easy way to avoid conflicts is to add an 'upstream' for your git repo, as other PR's may be merged while you're working on your branch/fork.   
 
 ```terminal
-git remote add upstream https://github.com/fineanmol/Hacktoberfest2022
+git remote add upstream https://github.com/ayushi-ras/JS-Game
 ```
 
 You can verify that the new remote has been added by typing
