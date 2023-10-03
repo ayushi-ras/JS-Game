@@ -17,6 +17,8 @@
     z-index: 1;
 }
 
+
+
 #layer1,
 #layer2,
 #layer3,
@@ -32,3 +34,17 @@
     display: none;
 }
 
+/* Style the icon button */
+#fullscreen-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 50%;
+  }
+  
+  
