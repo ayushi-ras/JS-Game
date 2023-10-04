@@ -20,6 +20,20 @@
   </head>
 
   <body>
+    <div class="night-sky"></div>
+    
+    <!-- Stars -->
+    <script>
+        const numberOfStars = 150;
+        const nightSky = document.querySelector('.night-sky');
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            nightSky.appendChild(star);
+        }
+    </script>
     <canvas id="canvas1"></canvas>
     <div id="fullscreen-button" class="ion-android-expand" title="Fullscreen Mode">
       <i class="fas fa-expand"></i>
@@ -56,6 +70,7 @@
     <img id="layer2" src="images/layer2.png" />
     <img id="layer3" src="images/layer3.png" />
     <img id="layer4" src="images/layer4.png" />
+    
 
     <script src="game.js" defer></script>
   </body>
