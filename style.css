@@ -86,10 +86,10 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    font-size: 24px;
+    font-size: 25px;
     cursor: pointer;
-    color: #fff;
-    background-color: #333;
+    color: black;
+    background-color: #fff;
     padding: 10px;
     border-radius: 50%;
   }
@@ -122,4 +122,85 @@ body {
 .links:hover {
   transform: scale(1.1);
   transition: ease-in-out 0.2s;
+}
+
+
+/* CSS for the Instructions Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+/* CSS for the Instructions Button */
+#instructions-button {
+  background-color: white;
+  color: #6495ed;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#instructions-button:hover {
+  background-color: #6495ed;
+  color: white;
+  border: 1px solid white;
+}
+
+/* CSS for the Key Highlights */
+.key {
+  background-color: #f1f1f1;
+  padding: 2px 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.key i{
+  color: cornflowerblue;
+}
+
+.contribute-instruction{
+  display: flex;
+  justify-content: space-around;
+  color: black;
+}
+
+.github-section{
+  margin-right: 20px;
 }
