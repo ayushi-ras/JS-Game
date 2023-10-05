@@ -5,6 +5,32 @@ window.addEventListener('load', function () {
   canvas.width = 500;
   canvas.height = 500;
 
+  // JavaScript to toggle the Instructions Modal
+  const instructionsButton = document.getElementById('instructions-button');
+  const instructionsModal = document.getElementById('instructions-modal');
+  const closeButton = document.querySelector('.close-button');
+
+  instructionsButton.addEventListener('click', () => {
+    instructionsModal.style.display = 'block';
+  });
+
+  closeButton.addEventListener('click', () => {
+    instructionsModal.style.display = 'none';
+  });
+
+  // Prevent clicks outside of the modal from closing it
+  instructionsModal.addEventListener('click', (event) => {
+    if (event.target === instructionsModal) {
+      event.stopPropagation(); // Stop the event propagation
+    }
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === instructionsModal) {
+      instructionsModal.style.display = 'none';
+    }
+  });
+
   // Function to toggle fullscreen mode
   function toggleFullscreen() {
     const canvas = document.getElementById('canvas1');
@@ -29,8 +55,8 @@ window.addEventListener('load', function () {
     if (!document.fullscreenElement) {
       // Adjust canvas size after exiting fullscreen
       const canvas = document.getElementById('canvas1');
-      canvas.width = 500; 
-      canvas.height = 500; 
+      canvas.width = 500;
+      canvas.height = 500;
     }
   });
 
@@ -381,11 +407,10 @@ window.addEventListener('load', function () {
     }
     drawPauseIndicator(context) {
       if (this.game.paused) {
-        if(document.getElementById('canvas1').width===900){
-          this.game.width=900;
-        }
-        else{
-          this.game.width=500;
+        if (document.getElementById('canvas1').width === 900) {
+          this.game.width = 900;
+        } else {
+          this.game.width = 500;
         }
         // This code block will execute when the game is paused
         context.fillStyle = 'rgba(0, 0, 0, 0.1)';
@@ -400,11 +425,10 @@ window.addEventListener('load', function () {
       }
     }
     draw(context) {
-      if(document.getElementById('canvas1').width===900){
-        this.game.width=900;
-      }
-      else{
-        this.game.width=500;
+      if (document.getElementById('canvas1').width === 900) {
+        this.game.width = 900;
+      } else {
+        this.game.width = 500;
       }
       context.save();
       context.fillStyle = this.color;
