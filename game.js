@@ -31,6 +31,12 @@ window.addEventListener('load', function () {
     }
   });
 
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !game.gameStart) {
+      // Check if Spacebar is pressed and the game is not already started
+      game.gameStart = true; // Set gameStart to true to start the game
+    }
+  });
   // Function to toggle fullscreen mode
   function toggleFullscreen() {
     const canvas = document.getElementById('canvas1');
@@ -416,10 +422,10 @@ window.addEventListener('load', function () {
         context.fillStyle = 'rgba(0, 0, 0, 0.1)';
         context.fillRect(0, 0, this.game.width, this.game.height);
         context.fillStyle = 'white';
-        //   context.font = '50px Bangers';
+        context.font = '10px sans-serif';
         context.fillText(
           'PAUSED',
-          this.game.width / 2 - 25,
+          this.game.width / 2 - 24,
           this.game.height / 2
         );
       }
@@ -430,7 +436,7 @@ window.addEventListener('load', function () {
       } else {
         this.game.width = 500;
       }
-      context.save();
+      console.log(this.fontSize);
       context.fillStyle = this.color;
       context.shadowOffsetX = 2;
       context.shadowOffsetY = 2;
@@ -493,6 +499,7 @@ window.addEventListener('load', function () {
       this.maxAnmo = 50;
       this.anmoTimer = 0;
       this.anmoInterval = 500;
+      this.gameStart = false;
       this.gameOver = false;
       this.score = 0;
       this.winningScore = 10;
@@ -622,17 +629,39 @@ window.addEventListener('load', function () {
   function animate(timeStamp) {
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
-
-    if (!game.paused) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+    // Draw the game layers first
+    game.background.draw(ctx);
+  
+    // Dark overlay
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; // Dark semi-transparent black
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+    game.ui.drawPauseIndicator(ctx);
+  
+    if (game.gameStart && !game.paused) {
+      ctx.font = '10px sans-serif';
       game.update(deltaTime);
       game.draw(ctx);
     } else {
-      // If the game is paused, draw the pause indicator
-      game.ui.drawPauseIndicator(ctx);
+      // If the game is not started or is paused, you can display a "Start" message or wait for an event to start the game.
+      if (!game.gameStart) {
+        ctx.fillStyle = 'white';
+        ctx.font = '50px Bangers';
+        ctx.fillText(
+          'Press Enter to start',
+          canvas.width / 2 - 190,
+          canvas.height / 2 + 20
+        );
+      }
     }
-
+  
     requestAnimationFrame(animate);
   }
+  
+
   animate(0);
 });
