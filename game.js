@@ -37,6 +37,67 @@ window.addEventListener('load', function () {
       game.gameStart = true; // Set gameStart to true to start the game
     }
   });
+
+  // Get the social sharing modal and close button elements
+  const socialSharingModal = document.getElementById('socialSharingModal');
+  const socialShareButton = document.getElementById('share-button');
+  const closeSocialModal = document.getElementById('closeSocialModal');
+
+  // Open the social sharing modal when the share button is clicked
+  socialShareButton.addEventListener('click', function () {
+    socialSharingModal.style.display = 'block';
+  });
+
+  // Close the social sharing modal when the close button (×) is clicked
+  closeSocialModal.addEventListener('click', function () {
+    socialSharingModal.style.display = 'none';
+  });
+
+  // Function to share on Instagram
+  document
+    .getElementById('instagram-share')
+    .addEventListener('click', function () {
+      const shareUrl = 'https://www.instagram.com/';
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    });
+
+  // Function to share on LinkedIn
+  document
+    .getElementById('linkedin-share')
+    .addEventListener('click', function () {
+      const shareUrl =
+        'https://www.linkedin.com/shareArticle?url=' +
+        encodeURIComponent(window.location.href);
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    });
+
+  // Close the social sharing modal if the user clicks outside of it
+  window.addEventListener('click', function (event) {
+    if (event.target === socialSharingModal) {
+      socialSharingModal.style.display = 'none';
+    }
+  });
+
+  // Function to share on Facebook
+  document
+    .getElementById('facebook-share')
+    .addEventListener('click', function () {
+      const shareUrl =
+        'https://www.facebook.com/sharer/sharer.php?u=' +
+        encodeURIComponent(window.location.href);
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    });
+
+  // Function to share on Twitter
+  document
+    .getElementById('twitter-share')
+    .addEventListener('click', function () {
+      const shareUrl =
+        'https://twitter.com/intent/tweet?url=' +
+        encodeURIComponent(window.location.href);
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    });
+
   // Function to toggle fullscreen mode
   function toggleFullscreen() {
     const canvas = document.getElementById('canvas1');
@@ -629,19 +690,19 @@ window.addEventListener('load', function () {
   function animate(timeStamp) {
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
-  
+
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
     // Draw the game layers first
     game.background.draw(ctx);
-  
+
     // Dark overlay
     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; // Dark semi-transparent black
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
+
     game.ui.drawPauseIndicator(ctx);
-  
+
     if (game.gameStart && !game.paused) {
       ctx.font = '10px sans-serif';
       game.update(deltaTime);
@@ -658,10 +719,9 @@ window.addEventListener('load', function () {
         );
       }
     }
-  
+
     requestAnimationFrame(animate);
   }
-  
 
   animate(0);
 });
