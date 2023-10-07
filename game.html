@@ -84,7 +84,11 @@
             />
           </a>
         </div>
-        <button id="instructions-button" title="How to play?">
+        <button
+          id="instructions-button"
+          title="How to play?"
+          style="margin-right: 10px"
+        >
           Instructions
         </button>
         <!-- HTML for the Instructions Modal -->
@@ -122,10 +126,12 @@
                   />
                 </g>
               </svg>
-              <span style="margin-left: 10px;">Game Instructions</span>
+              <span style="margin-left: 10px">Game Instructions</span>
             </h2>
             <hr style="margin-top: 10px; margin-bottom: 20px" />
-            <ul style="margin-left: 30px; font-size: 0.9rem; margin-bottom: 15px;">
+            <ul
+              style="margin-left: 30px; font-size: 0.9rem; margin-bottom: 15px"
+            >
               <li>
                 Attack:
                 <span class="key"><i class="fas fa-space-shuttle"></i></span>
@@ -151,6 +157,254 @@
                 Screen Button)
               </li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Share Button -->
+        <div class="social-sharing">
+          <button id="share-button"><i class="fas fa-share"></i> Share</button>
+        </div>
+
+        <!-- Social Sharing Modal -->
+        <div id="socialSharingModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeSocialModal">&times;</span>
+            <h2>Share This Game</h2>
+            <div class="sharing-options">
+              <a href="#" id="facebook-share">
+                <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+                <svg
+                  enable-background="new 0 0 32 32"
+                  height="32px"
+                  id="Layer_1"
+                  version="1.0"
+                  viewBox="0 0 32 32"
+                  width="32px"
+                  xml:space="preserve"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <circle
+                      clip-rule="evenodd"
+                      cx="16"
+                      cy="16"
+                      fill="#3B5998"
+                      fill-rule="evenodd"
+                      r="16"
+                    />
+                    <path
+                      d="M22,32V20h4l1-5h-5v-2c0-2,1.002-3,3-3h2V5c-1,0-2.24,0-4,0c-3.675,0-6,2.881-6,7v3h-4v5h4v12H22   z"
+                      fill="#FFFFFF"
+                      id="f_2_"
+                    />
+                  </g>
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                </svg>
+              </a>
+              <a href="#" id="twitter-share">
+                <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+                <svg
+                  enable-background="new 0 0 32 32"
+                  height="32px"
+                  id="Layer_1"
+                  version="1.0"
+                  viewBox="0 0 32 32"
+                  width="32px"
+                  xml:space="preserve"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <circle
+                      clip-rule="evenodd"
+                      cx="16"
+                      cy="16"
+                      fill="#55ACEE"
+                      fill-rule="evenodd"
+                      r="16"
+                    />
+                    <path
+                      d="M26.013,9.896c-0.737,0.323-1.527,0.538-2.359,0.636c0.85-0.498,1.5-1.289,1.807-2.232   c-0.793,0.462-1.672,0.798-2.608,0.979c-0.748-0.784-1.816-1.275-2.996-1.275c-2.269,0-4.105,1.807-4.105,4.039   c0,0.315,0.036,0.625,0.104,0.923c-3.412-0.172-6.436-1.78-8.461-4.222c-0.354,0.597-0.559,1.29-0.559,2.031   c0,1.4,0.728,2.636,1.828,3.363c-0.672-0.023-1.306-0.204-1.858-0.507c-0.001,0.017-0.001,0.033-0.001,0.051   c0,1.958,1.415,3.591,3.293,3.963c-0.343,0.09-0.706,0.141-1.082,0.141c-0.264,0-0.52-0.024-0.771-0.071   c0.521,1.603,2.038,2.771,3.834,2.806c-1.402,1.082-3.174,1.73-5.099,1.73c-0.33,0-0.659-0.019-0.979-0.058   c1.816,1.146,3.976,1.814,6.295,1.814c7.552,0,11.682-6.156,11.682-11.495c0-0.173-0.006-0.351-0.014-0.521   C24.766,11.417,25.462,10.706,26.013,9.896z"
+                      fill="#FFFFFF"
+                    />
+                  </g>
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                </svg>
+              </a>
+              <a href="#" id="instagram-share">
+                <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+                <svg
+                  height="32"
+                  style="overflow: visible; enable-background: new 0 0 32 32"
+                  viewBox="0 0 32 32"
+                  width="32"
+                  xml:space="preserve"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <g id="Instagram_1_">
+                      <g id="Instagram">
+                        <path
+                          d="M28,0H4C1.8,0,0,1.8,0,4v8h32V4C32,1.8,30.2,0,28,0z"
+                          id="Head"
+                          style="fill: #895a4d"
+                        />
+                        <path
+                          d="M2,0.6V12h2V0C3.3,0,2.6,0.2,2,0.6z"
+                          id="Red_x5F_Stripes"
+                          style="fill: #ff3939"
+                        />
+                        <rect
+                          height="12"
+                          id="Yellow_x5F_Stripes"
+                          style="fill: #fed049"
+                          width="2"
+                          x="4"
+                        />
+                        <rect
+                          height="12"
+                          id="Green_x5F_Stripes"
+                          style="fill: #10dd76"
+                          width="2"
+                          x="6"
+                        />
+                        <rect
+                          height="12"
+                          id="Blue_x5F_Stripes"
+                          style="fill: #5fccff"
+                          width="2"
+                          x="8"
+                        />
+                        <circle
+                          cx="26"
+                          cy="6"
+                          id="Lens_1_"
+                          r="3"
+                          style="fill: #162838"
+                        />
+                        <circle
+                          cx="26"
+                          cy="6"
+                          id="Lens_x5F_Outer"
+                          r="1.5"
+                          style="fill: #2c4356"
+                        />
+                        <circle
+                          cx="26"
+                          cy="6"
+                          id="Lens_x5F_Inside"
+                          r="0.5"
+                          style="fill: #47637a"
+                        />
+                        <path
+                          d="M0,12v16c0,2.2,1.8,4,4,4h24c2.2,0,4-1.8,4-4V12H0z"
+                          id="Body"
+                          style="fill: #e5e0dc"
+                        />
+                        <g id="Shadow">
+                          <polygon
+                            points="24.7,12 22.4,9.6 22.4,12 "
+                            style="fill: #75483d"
+                          />
+                          <path
+                            d="M20,12L9.6,22.4l9.6,9.6H28c2.2,0,4-1.8,4-4v-8.7L24.7,12H20z"
+                            style="fill: #d0cbc5"
+                          />
+                        </g>
+                        <circle
+                          cx="16"
+                          cy="16"
+                          id="Lens"
+                          r="9"
+                          style="fill: #dcd7d3"
+                        />
+                        <circle
+                          cx="16"
+                          cy="16"
+                          id="Inside_x5F_Lens"
+                          r="7"
+                          style="fill: #162838"
+                        />
+                        <circle
+                          cx="16"
+                          cy="16"
+                          id="_x32_nd_Inner_Circle"
+                          r="4"
+                          style="fill: #2c4356"
+                        />
+                        <circle
+                          cx="16"
+                          cy="16"
+                          id="Middle_Circle"
+                          r="2"
+                          style="fill: #162838"
+                        />
+                        <circle
+                          cx="18.5"
+                          cy="13.5"
+                          id="Reflection"
+                          r="1.5"
+                          style="fill: #47637a"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </a>
+              <a href="#" id="linkedin-share">
+                <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+                <svg
+                  enable-background="new 0 0 32 32"
+                  height="32px"
+                  id="Layer_1"
+                  version="1.0"
+                  viewBox="0 0 32 32"
+                  width="32px"
+                  xml:space="preserve"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <circle
+                      clip-rule="evenodd"
+                      cx="16"
+                      cy="16"
+                      fill="#007BB5"
+                      fill-rule="evenodd"
+                      r="16"
+                    />
+                    <g>
+                      <rect fill="#FFFFFF" height="14" width="4" x="7" y="11" />
+                      <path
+                        d="M20.499,11c-2.791,0-3.271,1.018-3.499,2v-2h-4v14h4v-8c0-1.297,0.703-2,2-2c1.266,0,2,0.688,2,2v8h4v-7    C25,14,24.479,11,20.499,11z"
+                        fill="#FFFFFF"
+                      />
+                      <circle cx="9" cy="8" fill="#FFFFFF" r="2" />
+                    </g>
+                  </g>
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                  <g />
+                </svg>
+              </a>
+
+              <!-- Add more sharing options as needed -->
+            </div>
           </div>
         </div>
       </div>
