@@ -162,11 +162,28 @@ body {
 }
 
 /* CSS for the Instructions Button */
+.btn-login{
+  background-color: white;
+  color: #6495ed;
+  border: none;
+  padding: 10px 20px;
+  margin: 2px;
+  cursor: pointer;
+  border: 1px solid white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.btn-login:hover{
+  background-color: #6495ed;
+  color: white;
+  border: 1px solid white;
+}
 #instructions-button {
   background-color: white;
   color: #6495ed;
   border: none;
   padding: 10px 20px;
+  margin: 2px;
   cursor: pointer;
   border: 1px solid white;
   font-weight: bold;
@@ -203,4 +220,58 @@ body {
 
 .github-section{
   margin-right: 20px;
+}
+
+.overlay{
+  width: 100%;
+  position : fixed;
+  top : 0%;
+  background: rgba(0,0,0,0.5);
+  height: 100vh;
+  z-index: -1;
+  opacity: 0;
+  transition: 1s;
+}
+.showoverlay{
+  z-index: 1;
+  opacity: 1;
+}
+
+.loginform{
+  width: 350px;
+  padding: 30px 20px;
+  transition: 2s;
+  background-color:aliceblue;
+  position:absolute;
+  left: 50%;
+  top:-50%;
+  box-shadow: 0px 0px 10px 3px #ccc;
+  transform : translate(-50%,-50%);
+  z-index: 9;
+}
+.showloginform{
+  top:50%;
+}
+.loginform input{
+  width : 100%;
+  margin-bottom : 15px;
+  height: 35px;
+}
+.loginform button{ 
+  background-color: black;
+  color:white;
+  padding : 10px 15px;
+}
+
+.loginform span{
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  color: white;
+  line-height: 30px;
+  height: 30px;
+  background-color: green;
+  text-align: center;
+  top:0px;
+  cursor: pointer;
 }

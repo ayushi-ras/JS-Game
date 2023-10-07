@@ -21,6 +21,7 @@
   </head>
 
   <body>
+   
     <div class="night-sky"></div>
 
     <!-- Stars -->
@@ -84,9 +85,18 @@
             />
           </a>
         </div>
+        
         <button id="instructions-button" title="How to play?">
           Instructions
         </button>
+
+        <button class="btn-login">Login</button>
+
+
+        
+
+
+
         <!-- HTML for the Instructions Modal -->
         <div id="instructions-modal" class="modal">
           <div class="modal-content">
@@ -155,5 +165,38 @@
         </div>
       </div>
     </div>
+    
+    <!-- <button id="instructions-button"> Login </button> -->
+    <div class="overlay"> </div>
+    <div class="loginform"> 
+      <span class="sap"> &times; </span>
+      <form action="">
+        <div>
+          <label for="">Username</label>
+          <input type="text">
+        </div>
+        <div>
+          <label for="">Password</label>
+          <input type="password">
+        </div>
+        <button>LOGIN</button>
+      </form>
+    </div>
   </body>
+  <script>
+    function showModal(){
+      document.querySelector('.overlay').classList.add('showoverlay');
+      document.querySelector('.loginform').classList.add('showloginform');
+    }
+    function closeModal(){
+      document.querySelector('.overlay').classList.remove('showoverlay');
+      document.querySelector('.loginform').classList.remove('showloginform');
+    }
+    var btnlogin= document.querySelector('.btn-login');//button
+    btnlogin.addEventListener("click",showModal)//button click
+
+    // cross element code 
+    var c= document.querySelector('.sap');
+    c.addEventListener("click",closeModal);
+  </script>
 </html>
