@@ -1,4 +1,60 @@
 window.addEventListener('load', function () {
+  let finalscore = 0;
+  // Winning animation
+  function makeItConfetti(){
+    var confettiPlayers = [];
+    var confetti = document.querySelectorAll('.confetti');
+    
+    if (!confetti[0].animate) {
+      return false;
+    }
+
+    for (var i = 0, len = confetti.length; i < len; ++i) {
+      var candycorn = confetti[i];
+      candycorn.innerHTML = '<div class="rotate"><div class="askew"></div></div>';
+      var scale = Math.random() * .7 + .3;
+      var player = candycorn.animate([
+        { transform: `translate3d(${(i/len*100)}vw,-5vh,0) scale(${scale}) rotate(0turn)`, opacity: scale },
+        { transform: `translate3d(${(i/len*100 + 10)}vw,105vh,0) scale(${scale}) rotate(${ Math.random() > .5 ? '' : '-'}2turn)`, opacity: 1 }
+      ], {
+        duration: Math.random() * 3000 + 5000,
+        iterations: Infinity,
+        delay: -(Math.random() * 7000)
+      });
+      
+      confettiPlayers.push(player);
+    }
+  }
+  let ifdone = false;
+  // all functions after winning
+  function make(score){
+    if(!ifdone){
+      finalscore = score;
+
+      document.querySelector("#win").style.visibility = "visible";
+      makeItConfetti()
+      document.querySelector(".fscore").innerHTML = `Your Final Score is : ${score}`;
+
+      navigator.clipboard.writeText(score);
+
+      const link = encodeURI(window.location.href);
+      const msg = encodeURIComponent(`Hey, my final score is: ${finalscore}`);
+
+      const fb = document.querySelector('#fb');
+      fb.href = `https://www.facebook.com/share.php?u=${link}`;
+
+      const twitter = document.querySelector('#xt');
+      twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript_game`;
+
+      const linkedIn = document.querySelector('#in');
+      linkedIn.href = `https://www.linkedin.com/`;
+      
+      const instagram = document.querySelector('#insta');
+      instagram.href = `https://www.instagram.com`;
+
+      ifdone = true;
+    }
+  }
   //canvas setup
   const canvas = document.getElementById('canvas1');
   const ctx = canvas.getContext('2d');
@@ -517,6 +573,7 @@ window.addEventListener('load', function () {
         if (this.game.score > this.game.winningScore) {
           message1 = 'Most Wondrous!';
           message2 = 'Well done explorer!';
+          make(this.game.score);
         } else {
           message1 = 'Blazes';
           message2 = 'Get my repair kit and Try Again!';
