@@ -1,39 +1,57 @@
 window.addEventListener('load', function () {
   let finalscore = 0;
   // Winning animation
-  function makeItConfetti(){
+  function makeItConfetti() {
     var confettiPlayers = [];
     var confetti = document.querySelectorAll('.confetti');
-    
+
     if (!confetti[0].animate) {
       return false;
     }
 
     for (var i = 0, len = confetti.length; i < len; ++i) {
       var candycorn = confetti[i];
-      candycorn.innerHTML = '<div class="rotate"><div class="askew"></div></div>';
-      var scale = Math.random() * .7 + .3;
-      var player = candycorn.animate([
-        { transform: `translate3d(${(i/len*100)}vw,-5vh,0) scale(${scale}) rotate(0turn)`, opacity: scale },
-        { transform: `translate3d(${(i/len*100 + 10)}vw,105vh,0) scale(${scale}) rotate(${ Math.random() > .5 ? '' : '-'}2turn)`, opacity: 1 }
-      ], {
-        duration: Math.random() * 3000 + 5000,
-        iterations: Infinity,
-        delay: -(Math.random() * 7000)
-      });
-      
+      candycorn.innerHTML =
+        '<div class="rotate"><div class="askew"></div></div>';
+      var scale = Math.random() * 0.7 + 0.3;
+      var player = candycorn.animate(
+        [
+          {
+            transform: `translate3d(${
+              (i / len) * 100
+            }vw,-5vh,0) scale(${scale}) rotate(0turn)`,
+            opacity: scale,
+          },
+          {
+            transform: `translate3d(${
+              (i / len) * 100 + 10
+            }vw,105vh,0) scale(${scale}) rotate(${
+              Math.random() > 0.5 ? '' : '-'
+            }2turn)`,
+            opacity: 1,
+          },
+        ],
+        {
+          duration: Math.random() * 3000 + 5000,
+          iterations: Infinity,
+          delay: -(Math.random() * 7000),
+        }
+      );
+
       confettiPlayers.push(player);
     }
   }
   let ifdone = false;
   // all functions after winning
-  function make(score){
-    if(!ifdone){
+  function make(score) {
+    if (!ifdone) {
       finalscore = score;
 
-      document.querySelector("#win").style.visibility = "visible";
-      makeItConfetti()
-      document.querySelector(".fscore").innerHTML = `Your Final Score is : ${score}`;
+      document.querySelector('#win').style.visibility = 'visible';
+      makeItConfetti();
+      document.querySelector(
+        '.fscore'
+      ).innerHTML = `Your Final Score is : ${score}`;
 
       navigator.clipboard.writeText(score);
 
@@ -48,7 +66,7 @@ window.addEventListener('load', function () {
 
       const linkedIn = document.querySelector('#in');
       linkedIn.href = `https://www.linkedin.com/`;
-      
+
       const instagram = document.querySelector('#insta');
       instagram.href = `https://www.instagram.com`;
 
@@ -743,6 +761,99 @@ window.addEventListener('load', function () {
   }
   const game = new Game(canvas.width, canvas.height);
   let lastTime = 0;
+
+  // Get the difficulty select element
+  const difficultySelect = document.getElementById('difficulty-select');
+
+  // Add event listener to handle difficulty level changes
+  difficultySelect.addEventListener('change', setDifficulty);
+
+  // Function to set game difficulty based on the selected level
+  function setDifficulty() {
+    const selectedDifficulty = difficultySelect.value;
+
+    // Adjust game settings based on difficulty
+    switch (selectedDifficulty) {
+      case 'easy':
+        // Modify game settings for easy difficulty (e.g., slower enemy speed)
+        game.speed = 0.5;
+        game.enemyInterval = 1500;
+        break;
+      case 'normal':
+        // Default game settings (normal difficulty)
+        game.speed = 1;
+        game.enemyInterval = 1000;
+        break;
+      case 'hard':
+        // Modify game settings for hard difficulty (e.g., faster enemy speed)
+        game.speed = 1.5;
+        game.enemyInterval = 800;
+        break;
+      // Add more cases for additional difficulty levels if needed
+    }
+  }
+
+  // Initialize the game with default settings (normal difficulty)
+  setDifficulty();
+
+  // JavaScript to show the modal message when a difficulty level is selected
+  document
+    .getElementById('difficulty-select')
+    .addEventListener('change', function () {
+      const selectElement = document.getElementById('difficulty-select');
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const selectedText = selectedOption.textContent;
+
+      if (selectedText !== 'Difficulty level') {
+        const message = `You have selected the "${selectedText}" difficulty level.`;
+        openDifficultyModal(message);
+      }
+    });
+
+  const difficultyModal = document.getElementById('difficulty-modal');
+  const difficultyMessage = document.getElementById('difficulty-message');
+  const countdown = document.getElementById('countdown');
+  const countNum=document.getElementById('count-num');
+
+  // JavaScript to show and close the difficulty modal
+  function openDifficultyModal(message) {
+    const modal = document.getElementById('difficulty-modal');
+    const messageElement = document.getElementById('difficulty-message');
+    messageElement.textContent = message;
+    modal.style.display = 'block';
+  }
+
+  const closeDifficultyModal = () => {
+    difficultyModal.style.display = 'none';
+  };
+
+  const updateCountdown = (seconds) => {
+    countdown.style.display = 'block';
+    countNum.textContent = seconds;
+  };
+
+  difficultySelect.addEventListener('change', function () {
+    const selectedOption =
+      difficultySelect.options[difficultySelect.selectedIndex].text;
+    difficultyMessage.textContent = `You have selected the '${selectedOption}' difficulty level.`;
+    difficultyMessage.style.display = 'block';
+    difficultyModal.style.display = 'block';
+
+    // Start the countdown timer
+    let secondsRemaining = 5;
+    updateCountdown(secondsRemaining);
+
+    const countdownInterval = setInterval(() => {
+      secondsRemaining--;
+      updateCountdown(secondsRemaining);
+
+      if (secondsRemaining === -1) {
+        clearInterval(countdownInterval);
+        closeDifficultyModal();
+      }
+    }, 1000);
+  });
+
   //animation loop
   function animate(timeStamp) {
     const deltaTime = timeStamp - lastTime;
