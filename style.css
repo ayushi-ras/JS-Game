@@ -55,7 +55,7 @@ body {
 #canvas1 {
   border: 5px solid black;
   position: absolute;
-  top: 54%; /*Adds a little spacing from navbar */
+  top: 52%; /*Adds a little spacing from navbar */
   left: 50%;
   transform: translate(-50%, -50%);
   background: #4d79bc;
@@ -83,7 +83,7 @@ body {
 /* Style the icon button */
 #fullscreen-button {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
   font-size: 25px;
   cursor: pointer;
@@ -495,3 +495,50 @@ a:visited{
   );
 }
 /* Win confetti animation end */
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: transparent;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style the difficulty select element */
+#difficulty-select {
+  padding: 10px 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: white;
+  color: cornflowerblue;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+  border: 1px solid white;
+  outline: none;
+}
+
+#difficulty-modal{
+  top: 10%;
+}
+
+#difficulty-modal .modal-content{
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#count-num{
+  color: yellow;
+  font-size: 2rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
