@@ -65,7 +65,7 @@ window.addEventListener('load', function () {
       twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript_game`;
 
       const linkedIn = document.querySelector('#in');
-      linkedIn.href = `https://www.linkedin.com/`;
+      linkedIn.href = `https://www.linkedin.com/shareArticle?mini=true&url=${link}`;
 
       const instagram = document.querySelector('#insta');
       instagram.href = `https://www.instagram.com`;
