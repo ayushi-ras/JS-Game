@@ -1,3 +1,4 @@
+
 # Hactoberfest 2023
 Welcome You all for  the contribution. Make Valid Changes in this project . 
 
@@ -41,15 +42,4 @@ git rebase upstream/main
 <a href="https://github.com/ayushi-ras/JS-Game/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=ayushi-ras/JS-Game" />
 </a>
-
-
-
-
-
-
-
-
-
-
-
 
